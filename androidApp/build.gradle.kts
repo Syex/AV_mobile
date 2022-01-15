@@ -17,6 +17,10 @@ android {
             isMinifyEnabled = false
         }
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -24,4 +28,13 @@ dependencies {
     implementation("com.google.android.material:material:1.4.0")
     implementation("androidx.appcompat:appcompat:1.3.1")
     implementation("androidx.constraintlayout:constraintlayout:2.1.0")
+
+    // CameraX
+    val cameraX = "1.0.2"
+    implementation("androidx.camera:camera-camera2:$cameraX")
+    implementation("androidx.camera:camera-lifecycle:$cameraX")
+    implementation("androidx.camera:camera-view:1.0.0-alpha32")
+
+    // MLKit
+    implementation("com.google.mlkit:barcode-scanning:17.0.1")
 }
