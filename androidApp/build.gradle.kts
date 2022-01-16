@@ -6,11 +6,11 @@ plugins {
 val composeVersion = "1.0.5"
 
 android {
-    compileSdk = 31
+    compileSdk = libs.versions.compileSdk.get().toInt()
     defaultConfig {
         applicationId = "de.memorian.av.android"
-        minSdk = 23
-        targetSdk = 31
+        minSdk = libs.versions.minSdk.get().toInt()
+        targetSdk = libs.versions.targetSdk.get().toInt()
         versionCode = 1
         versionName = "1.0"
 
@@ -57,6 +57,8 @@ dependencies {
 
     // MLKit
     implementation("com.google.mlkit:barcode-scanning:17.0.1")
+
+    implementation(libs.koin.android)
 
     // Compose
     implementation("androidx.compose.ui:ui:$composeVersion")

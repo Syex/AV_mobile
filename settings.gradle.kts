@@ -6,6 +6,8 @@ pluginManagement {
     }
 }
 
+enableFeaturePreview("VERSION_CATALOGS")
+
 rootProject.name = "AV_Mobile"
 include(":androidApp")
 include(":shared")

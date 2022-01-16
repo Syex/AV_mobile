@@ -21,9 +21,12 @@ import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.barcode.common.Barcode
 import com.google.mlkit.vision.common.InputImage
 import de.memorian.av.android.databinding.ActivityBarcodeScanBinding
+import de.memorian.av.log.logDebug
+import de.memorian.av.log.logError
+import org.koin.core.component.KoinComponent
 import java.util.concurrent.Executors
 
-class BarcodeScanActivity : AppCompatActivity() {
+class BarcodeScanActivity : AppCompatActivity(), KoinComponent {
 
     private lateinit var binding: ActivityBarcodeScanBinding
     private val cameraPreview by lazy { binding.cameraView }
@@ -114,7 +117,7 @@ class BarcodeScanActivity : AppCompatActivity() {
                 )
 
             } catch (exc: Exception) {
-                Log.e(TAG, "Use case binding failed", exc)
+                logError("Use case binding failed", exc)
             }
 
         }, ContextCompat.getMainExecutor(this))
@@ -149,10 +152,10 @@ class BarcodeScanActivity : AppCompatActivity() {
                     // See API reference for complete list of supported types
                     when (barcode.valueType) {
                         Barcode.FORMAT_EAN_8 -> {
-                            Log.i(TAG, "Barcode value is $rawValue")
+                            logDebug("EAN_8 barcode detected: $rawValue")
                         }
                         Barcode.FORMAT_EAN_13 -> {
-                            Log.i(TAG, "Barcode value is $rawValue")
+                            logDebug("EAN_13 barcode detected: $rawValue")
                         }
                     }
                 }
