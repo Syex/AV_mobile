@@ -9,8 +9,13 @@
         android:allowBackup="false"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
             android:name=".presentation.barcode.BarcodeScanActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".presentation.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

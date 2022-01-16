@@ -2,6 +2,8 @@ package de.memorian.av.android.presentation.barcode
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
@@ -169,6 +171,9 @@ class BarcodeScanActivity : AppCompatActivity() {
     }
 
     companion object {
+
+        fun newIntent(context: Context) = Intent(context, BarcodeScanActivity::class.java)
+
         private const val TAG = "CameraXBasic"
         private const val REQUEST_CODE_PERMISSIONS = 10
         private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)

@@ -40,15 +40,14 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = composeVersion
+        kotlinCompilerExtensionVersion = "1.1.0-rc02"
     }
 }
 
 dependencies {
     implementation(project(":shared"))
-    implementation("com.google.android.material:material:1.4.0")
-    implementation("androidx.appcompat:appcompat:1.3.1")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.0")
+    implementation("com.google.android.material:material:1.5.0")
+    implementation("androidx.appcompat:appcompat:1.4.1")
 
     // CameraX
     val cameraX = "1.0.2"
@@ -76,4 +75,6 @@ dependencies {
     implementation("androidx.activity:activity-compose:1.4.0")
     // Integration with ViewModels
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.4.0")
+    // Navigation
+    implementation("androidx.navigation:navigation-compose:2.4.0-rc01")
 }
