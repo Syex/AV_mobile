@@ -1,14 +1,10 @@
 package de.memorian.av
 
-import co.touchlab.kermit.Logger
-import de.memorian.av.log.DefaultLogger
-import de.memorian.av.log.appLogger
+import de.memorian.av.log.KermitFlykawLogger
+import io.github.syex.flykaw.LogConfig
 import org.koin.core.KoinApplication
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
 import org.koin.core.context.startKoin
 import org.koin.core.module.Module
-import org.koin.core.parameter.parametersOf
 import org.koin.dsl.module
 
 fun initKoin(appModule: Module): KoinApplication {
@@ -23,8 +19,5 @@ fun initKoin(appModule: Module): KoinApplication {
 }
 
 private val coreModule = module {
-    appLogger = DefaultLogger()
+    LogConfig.setLogger(KermitFlykawLogger())
 }
-
-inline fun <reified T> KoinComponent.injectLogger(): Lazy<Logger> =
-    inject { parametersOf(T::class.simpleName) }

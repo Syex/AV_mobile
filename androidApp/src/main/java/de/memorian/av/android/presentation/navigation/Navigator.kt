@@ -7,6 +7,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import de.memorian.av.android.presentation.navigation.Navigator.NavTarget
+import io.github.syex.flykaw.logVerbose
 import kotlinx.coroutines.flow.*
 
 interface Navigator {
@@ -34,13 +35,13 @@ class NavigatorImpl : Navigator {
     override val sharedFlow = _sharedFlow.asSharedFlow()
 
     override fun navigateTo(navTarget: NavTarget, args: List<Any>) {
-//        Timber.v("Navigating to $route")
+        logVerbose("Navigating to $navTarget")
         _sharedFlow.tryEmit(navTarget.label)
     }
 }
 
 @Composable
-fun GzgNavHost(navController: NavHostController, navigator: Navigator) {
+fun AppNavHost(navController: NavHostController, navigator: Navigator) {
     LaunchedEffect("navigation") {
         navigator.sharedFlow.onEach {
             if (NavTarget.Back.label == it) {

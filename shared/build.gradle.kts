@@ -26,7 +26,9 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(libs.koin.core)
-                api(libs.kermit)
+
+                api(libs.flykaw)
+                implementation(libs.kermit)
             }
         }
         val commonTest by getting {

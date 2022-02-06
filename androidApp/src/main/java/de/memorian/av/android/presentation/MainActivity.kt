@@ -20,10 +20,15 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import de.memorian.av.android.presentation.barcode.BarcodeScanActivity
+import de.memorian.av.android.presentation.navigation.AppNavHost
 import de.memorian.av.android.presentation.navigation.Navigator
 import de.memorian.gzg.ui.theme.AppTheme
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), KoinComponent {
+
+    private val navigator by inject<Navigator>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +53,7 @@ class MainActivity : AppCompatActivity() {
                         }
                     }
                 ) {
-
+                    AppNavHost(navController, navigator)
                 }
             }
         }

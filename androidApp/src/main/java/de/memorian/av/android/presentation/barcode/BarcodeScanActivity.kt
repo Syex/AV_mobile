@@ -21,8 +21,8 @@ import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.barcode.common.Barcode
 import com.google.mlkit.vision.common.InputImage
 import de.memorian.av.android.databinding.ActivityBarcodeScanBinding
-import de.memorian.av.log.logDebug
-import de.memorian.av.log.logError
+import io.github.syex.flykaw.logDebug
+import io.github.syex.flykaw.logError
 import org.koin.core.component.KoinComponent
 import java.util.concurrent.Executors
 

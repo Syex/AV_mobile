@@ -1,9 +1,11 @@
 package de.memorian.av.log
 
 import co.touchlab.kermit.Severity
+import io.github.syex.flykaw.LogLevel
+import io.github.syex.flykaw.Logger
 import co.touchlab.kermit.Logger as KermitLogger
 
-class DefaultLogger : Logger {
+class KermitFlykawLogger : Logger {
 
     private val kermitLogger = KermitLogger
 
