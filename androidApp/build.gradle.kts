@@ -58,6 +58,7 @@ dependencies {
     implementation("com.google.mlkit:barcode-scanning:17.0.2")
 
     implementation(libs.koin.android)
+    implementation(libs.koin.android.compose)
 
     // Compose
     implementation("androidx.compose.ui:ui:$composeVersion")
@@ -74,9 +75,9 @@ dependencies {
     // Integration with activities
     implementation("androidx.activity:activity-compose:1.4.0")
     // Integration with ViewModels
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.4.0")
+    implementation(libs.androidx.viewmodel.compose)
     // Navigation
-    implementation("androidx.navigation:navigation-compose:2.4.0-rc01")
+    implementation("androidx.navigation:navigation-compose:2.4.0")
 
     implementation("io.coil-kt:coil-compose:1.4.0")
 }

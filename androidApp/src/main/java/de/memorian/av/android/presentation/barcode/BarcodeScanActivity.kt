@@ -6,7 +6,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.util.Log
 import android.util.Size
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.CameraSelector
@@ -26,6 +25,12 @@ import io.github.syex.flykaw.logError
 import org.koin.core.component.KoinComponent
 import java.util.concurrent.Executors
 
+/**
+ * Activity using Firebase MLKit and AndroidX camera to scan camera feed for barcodes with EAN 8 and
+ * EAN 13 format.
+ *
+ * Mostly taken from [official sample](https://developers.google.com/ml-kit/vision/barcode-scanning/android).
+ */
 class BarcodeScanActivity : AppCompatActivity(), KoinComponent {
 
     private lateinit var binding: ActivityBarcodeScanBinding
@@ -161,7 +166,7 @@ class BarcodeScanActivity : AppCompatActivity(), KoinComponent {
                 }
             }
             .addOnFailureListener {
-                Log.e(TAG, "Barcode processing failed", it)
+                logError("Barcode processing failed", it)
             }.addOnCompleteListener {
                 imageProxy.close()
                 isProcessingImage = false
@@ -177,7 +182,6 @@ class BarcodeScanActivity : AppCompatActivity(), KoinComponent {
 
         fun newIntent(context: Context) = Intent(context, BarcodeScanActivity::class.java)
 
-        private const val TAG = "CameraXBasic"
         private const val REQUEST_CODE_PERMISSIONS = 10
         private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
     }

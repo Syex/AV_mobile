@@ -20,4 +20,6 @@ fun initKoin(appModule: Module): KoinApplication {
 
 private val coreModule = module {
     LogConfig.setLogger(KermitFlykawLogger())
+
+    single<Navigator> { NavigatorImpl() }
 }

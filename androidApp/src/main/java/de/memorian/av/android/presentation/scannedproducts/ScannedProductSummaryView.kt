@@ -13,12 +13,12 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
 import de.memorian.av.domain.model.ScannedProductSummary
 import de.memorian.av.util.toDisplayableFormat
 import de.memorian.gzg.ui.theme.AppTheme
-import kotlinx.datetime.Clock
 
 @Composable
 fun ScannedProductSummaryView(
@@ -69,20 +69,15 @@ fun ScannedProductSummaryView(
     }
 }
 
-@Preview(showBackground = true)
+@Preview
 @Composable
-fun CashbackRequestViewPreview() {
+fun CashbackRequestViewPreview(
+    @PreviewParameter(ScannedProductsPreviewParameterProvider::class)
+    scannedProducts: List<ScannedProductSummary>,
+) {
     AppTheme {
         ScannedProductSummaryView(
-            model = ScannedProductSummary(
-                databaseId = 0,
-                title = "Test Product",
-                imageUrl = "https://picsum.photos/200/300",
-                ean = "1111111111111",
-                scannedDate = Clock.System.now(),
-                bestPrice = "24,99€",
-                bestPlatform = "A good buyer"
-            ),
+            model = scannedProducts.first(),
             onClickListener = {}
         )
     }

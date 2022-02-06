@@ -2,43 +2,17 @@ package de.memorian.av.android.presentation.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.navigation.NamedNavArgument
+import androidx.compose.runtime.collectAsState
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import de.memorian.av.android.presentation.navigation.Navigator.NavTarget
-import io.github.syex.flykaw.logVerbose
-import kotlinx.coroutines.flow.*
-
-interface Navigator {
-
-    val sharedFlow: SharedFlow<String>
-
-    fun navigateTo(navTarget: NavTarget, args: List<Any> = emptyList())
-
-    enum class NavTarget(val label: String, val arguments: List<NamedNavArgument> = emptyList()) {
-
-        Back("Back"),
-        ScannedProducts("scannedProducts"),
-        Settings("settings");
-
-        companion object {
-
-            val bottomNavigationTargets = setOf(ScannedProducts, Settings)
-        }
-    }
-}
-
-class NavigatorImpl : Navigator {
-
-    private val _sharedFlow = MutableSharedFlow<String>(extraBufferCapacity = 1)
-    override val sharedFlow = _sharedFlow.asSharedFlow()
-
-    override fun navigateTo(navTarget: NavTarget, args: List<Any>) {
-        logVerbose("Navigating to $navTarget")
-        _sharedFlow.tryEmit(navTarget.label)
-    }
-}
+import de.memorian.av.Navigator
+import de.memorian.av.Navigator.NavTarget
+import de.memorian.av.android.presentation.scannedproducts.ScannedProductsScreen
+import de.memorian.av.presentation.scannedproducts.ScannedProductsViewModel
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
+import org.koin.androidx.compose.getViewModel
 
 @Composable
 fun AppNavHost(navController: NavHostController, navigator: Navigator) {
@@ -54,14 +28,11 @@ fun AppNavHost(navController: NavHostController, navigator: Navigator) {
 
     NavHost(navController = navController, startDestination = NavTarget.ScannedProducts.label) {
         composable(NavTarget.ScannedProducts.label) {
-//            val viewModel = viewModel<CashbackRequestsViewModel>(
-//                factory = CashbackRequestsViewModelFactory(gzgModel)
-//            )
-//            CashbackRequestsScreen(
-//                viewModel.stateFlow.collectAsState(),
-//                viewModel::onCashbackRequestClicked,
-//                viewModel::onNewCashbackClicked
-//            )
+            val viewModel = getViewModel<ScannedProductsViewModel>()
+            ScannedProductsScreen(
+                viewModel.stateFlow.collectAsState(),
+                viewModel::onScannedProductClicked,
+            )
         }
         composable(
             NavTarget.Settings.label,
