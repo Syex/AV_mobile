@@ -34,7 +34,6 @@ android {
         sourceCompatibility(JavaVersion.VERSION_1_8)
         targetCompatibility(JavaVersion.VERSION_1_8)
     }
-    // For Kotlin projects
     kotlinOptions {
         jvmTarget = "1.8"
     }
@@ -56,7 +55,7 @@ dependencies {
     implementation("androidx.camera:camera-view:1.0.0-alpha32")
 
     // MLKit
-    implementation("com.google.mlkit:barcode-scanning:17.0.1")
+    implementation("com.google.mlkit:barcode-scanning:17.0.2")
 
     implementation(libs.koin.android)
 
@@ -67,9 +66,8 @@ dependencies {
     // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
     implementation("androidx.compose.foundation:foundation:$composeVersion")
     val material3Compose = "1.0.0-alpha03"
-    // Material Design
     implementation("androidx.compose.material:material:$composeVersion")
-    implementation("androidx.compose.material3:material3:$material3Compose")
+    implementation("androidx.compose.material3:material3:1.0.0-alpha04")
     // Material design icons
     implementation("androidx.compose.material:material-icons-core:$composeVersion")
     implementation("androidx.compose.material:material-icons-extended:$composeVersion")
@@ -79,4 +77,6 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.4.0")
     // Navigation
     implementation("androidx.navigation:navigation-compose:2.4.0-rc01")
+
+    implementation("io.coil-kt:coil-compose:1.4.0")
 }

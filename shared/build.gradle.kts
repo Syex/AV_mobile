@@ -27,8 +27,10 @@ kotlin {
             dependencies {
                 implementation(libs.koin.core)
 
-                api(libs.flykaw)
+                api("io.github.syex:flykaw:1.0.0")
                 implementation(libs.kermit)
+
+                api("org.jetbrains.kotlinx:kotlinx-datetime:0.3.2")
             }
         }
         val commonTest by getting {
