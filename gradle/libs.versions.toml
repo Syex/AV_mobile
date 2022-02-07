@@ -8,6 +8,7 @@ compileSdk = "31"
 coroutines = "1.6.0"
 koin = "3.1.4"
 kotlin = "1.6.10"
+mokoResources = "0.18.0"
 
 # Android
 lifecycle = "2.4.0"
@@ -19,6 +20,9 @@ coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", ve
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
 koin-android-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin" }
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
+
+moko = { module = "dev.icerock.moko:resources", version.ref = "mokoResources" }
+moko-test = { module = "dev.icerock.moko:resources-test", version.ref = "mokoResources" }
 
 # ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
 # ktor-client-ios = { module = "io.ktor:ktor-client-ios", version.ref = "ktor" }

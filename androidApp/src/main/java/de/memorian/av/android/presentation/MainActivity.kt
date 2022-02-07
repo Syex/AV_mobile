@@ -14,6 +14,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
@@ -74,7 +75,7 @@ class MainActivity : AppCompatActivity(), KoinComponent {
 
                 NavigationBarItem(
                     icon = { Icon(icon, contentDescription = null) },
-                    label = { Text("test") },
+                    label = { Text(stringResource(id = navTarget.getTitle()!!.resourceId)) },
                     selected = currentDestination?.hierarchy?.any {
                         it.route == navTarget.label
                     } == true,

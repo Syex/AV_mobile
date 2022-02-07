@@ -14,7 +14,7 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        resourceConfigurations.add("de")
+        resourceConfigurations.addAll(listOf("de", "en"))
     }
     buildTypes {
         getByName("debug") {

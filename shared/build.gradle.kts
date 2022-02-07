@@ -2,6 +2,7 @@ plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
     id("com.android.library")
+    id("dev.icerock.mobile.multiplatform-resources")
 }
 
 version = "1.0"
@@ -32,12 +33,16 @@ kotlin {
                 implementation(libs.kermit)
 
                 api("org.jetbrains.kotlinx:kotlinx-datetime:0.3.2")
+
+                api(libs.moko)
             }
         }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
+
+                implementation(libs.moko.test)
             }
         }
         val androidMain by getting {
@@ -79,4 +84,9 @@ android {
         minSdk = libs.versions.minSdk.get().toInt()
         targetSdk = libs.versions.targetSdk.get().toInt()
     }
+}
+
+configure<dev.icerock.gradle.MultiplatformResourcesPluginExtension> {
+    multiplatformResourcesPackage = "de.memorian.av"
+    multiplatformResourcesClassName = "SharedRes"
 }

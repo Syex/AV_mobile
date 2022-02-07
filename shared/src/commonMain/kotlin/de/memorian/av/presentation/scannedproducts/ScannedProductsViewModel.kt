@@ -19,7 +19,6 @@ class ScannedProductsViewModel(
     val stateFlow: StateFlow<ScannedProductsState> = _stateFlow.asStateFlow()
 
     fun onScannedProductClicked(scannedProduct: ScannedProductSummary) {
-
     }
 }
 

@@ -1,5 +1,6 @@
 package de.memorian.av
 
+import dev.icerock.moko.resources.StringResource
 import io.github.syex.flykaw.logVerbose
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
@@ -20,6 +21,12 @@ interface Navigator {
         companion object {
 
             val bottomNavigationTargets = setOf(ScannedProducts, Settings)
+        }
+
+        fun getTitle(): StringResource? = when (this) {
+            ScannedProducts -> SharedRes.strings.title_scanned_products
+            Settings -> SharedRes.strings.title_settings
+            else -> null
         }
     }
 }
