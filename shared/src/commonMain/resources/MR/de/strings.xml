@@ -2,4 +2,6 @@
 <resources>
     <string name="title_scanned_products">Gescannte Produkte</string>
     <string name="title_settings">Einstellungen</string>
+
+    <string name="best_price_template">bei %s</string>
 </resources>

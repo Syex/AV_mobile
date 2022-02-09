@@ -2,4 +2,6 @@
 <resources>
     <string name="title_scanned_products">Scanned Products</string>
     <string name="title_settings">Settings</string>
+
+    <string name="best_price_template">at %s</string>
 </resources>
