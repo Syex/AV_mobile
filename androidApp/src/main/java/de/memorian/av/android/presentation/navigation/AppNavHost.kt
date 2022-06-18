@@ -1,5 +1,6 @@
 package de.memorian.av.android.presentation.navigation
 
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -37,19 +38,7 @@ fun AppNavHost(navController: NavHostController, navigator: Navigator) {
         composable(
             NavTarget.Settings.label,
         ) {
-//            val viewModel = viewModel<AddCashbackRequestViewModel>(
-//                factory = AddCashbackRequestViewModelFactory(campaignUrl, cashbackRequestIdToEdit)
-//            )
-//            AddCashbackRequestScreen(
-//                viewModel.stateFlow.collectAsState(),
-//                viewModel::onCashbackRequestedAtSelected,
-//                viewModel::onCashbackReceivedAtSelected,
-//                viewModel::onPriceChanged,
-//                viewModel::onNotesChanged,
-//                viewModel::onDeleteImageClicked,
-//                viewModel::onAddImageClicked,
-//                viewModel::onSaveClicked
-//            )
+            Text(text = "Settings")
         }
     }
 }
